@@ -1,0 +1,44 @@
+{
+    "apiVersion": "vlabs",
+    "properties": {
+      "orchestratorProfile": {
+            "orchestratorType": "Kubernetes",
+            "kubernetesConfig": {
+              "clusterSubnet": "172.16.0.0/20" 
+            }
+      },
+      "masterProfile": {
+        "count": 1,
+        "dnsPrefix": "sre-assesment",
+        "vmSize": "Standard_D2_v3",
+        "distro": "ubuntu-18.04",
+        "vnetSubnetId": "/subscriptions/3cc46287-d12f-47f1-b790-deac84e434df/resourceGroups/sre-assesment/providers/Microsoft.Network/virtualNetworks/sre-assesment-vnet/subnets/KubeSubnet",
+        "firstConsecutiveStaticIP": "172.16.1.50", 
+        "vnetCidr": "172.16.0.0/16"
+      },
+      "agentPoolProfiles": [
+        {
+          "name": "agentpool1",
+          "count": 2,
+          "vmSize": "Standard_D2_v3",
+          "vnetSubnetId": "/subscriptions/3cc46287-d12f-47f1-b790-deac84e434df/resourceGroups/sre-assesment/providers/Microsoft.Network/virtualNetworks/sre-assesment-vnet/subnets/KubeSubnet",
+          "distro": "ubuntu-18.04"
+        }
+      ],
+      "linuxProfile": {
+        "runUnattendedUpgradesOnBootstrap": false,
+        "adminUsername": "dbuzan",
+        "ssh": {
+          "publicKeys": [
+            {
+              "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDZbQax1/lz87yqKcbflKQwQK8N51ykEQdHGwuU25cRFCyyJvpIrbKYS1SWmLV+TYVeCmIqWhxharNNpASh0rvUd0EXX4ojlfy7jt0VQ/wFBVfhgvFsOqou7h4TWbwcIRWs98BuCIqhTij/rbSWzsOGChaDnfpj2VKcXt0rgQ6Nrx9FQaYdjn/iavrmnMOP3Gg907Nk+VmGFDlPuYtt9yNmxvT3gxIzBpBN9nk8/5KtG6TgJjQ5gYb7/bhzS6QCLX6QEU24DMYtVMiS3ai+qIi3OnGzndnD2dn38gNayCwMJUQ0LGIeeMg+MWLfY+HMCodtYLhAahYsReoZ4wxdu/XD rsa-key-20220816"
+            }
+          ]
+        }
+      },
+       "servicePrincipalProfile": {
+          "clientId": "996275c0-4726-4950-98ea-3e1a85a6aa44",
+          "secret": "yzA8Q~6evz~ZCQRC71a7r_Aefvw4r4QXpt37~cjD"
+      }
+    }
+}
